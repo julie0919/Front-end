@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="target" action="result.html">
+    <label for="name">name</label> <input id="name" type="name"/>
+    <input type="submit">
+  </form>
+
+  <p id="result"></p>
+  <input id="target_change" type="name" />
+
+  <input id="target_blur" type="name"/>
+  <script>
+    // submit 은 폼의 정보를 서버로 전송하는 명령인 submit시에 일어난다, form태그에 적용
+    var t = document.getElementById('target');
+    t.addEventListener('submit', function(event) {
+      if(document.getElementById('name').value.length === 0) {
+        alert('Name 필드의 값이 누락되었습니다.');
+        event.preventDefault();
+      }
+    });
+
+    // change는 폼 컨트롤의 값이 변경 되었을 때 발생하는 이벤트이다.
+    // input(text, radio, checkbox), textarea, select 태그에 적용된다
+     var t = document.getElementById('target_change');
+     t.addEventListener('change', function(event) {
+       document.getElementById('result').innerHTML=event.target.value;
+     });
+
+    //  focus 는 엘리먼트에 포커스가 생겼을 때, blur는 포커스가 사라졌을 때 발생하는 이벤트다.
+    // 다음 태그를 제외한 모든 태그에서 발생
+    // <base> <bdo> <br> <head> <html> <iframe> <neta> <param> <script> <style> <title>
+      var t = document.getElementById('target_blur');
+      t.addEventListener('blur', function(event) {
+        alert('blur');
+      });
+
+      t.addEventListener('focus', function(event) {
+        alert('focus');
+      });
+      
+  </script>
+</body>
+</html>
