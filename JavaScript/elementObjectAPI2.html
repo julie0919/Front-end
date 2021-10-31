@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="marked">html</li>
+    <li>css</li>
+    <li id="active">JavaScript
+      <ul>
+        <li>JavaScript Core</li>
+        <li class="marked">DOM</li>
+        <li class="marked">BOM</li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    // 1. document.getElementsByClassName로 조회하는 경우
+    // ==> 문서 전체에 있는 내용중 조회하려는 이름을 가지고 있는 class(element)만이 조회가 된다
+    var list = document.getElementsByClassName(`marked`);
+    console.group(`document`);
+    for(var i=0; i < list.length; i++) {
+      console.log(list[i].textContent);
+    }
+    console.groupEnd();
+
+    console.group(`active`)
+
+    // 2. 특정 element에 대해 getElementsByClassName로 조회하는 경우
+    // ==> 그 element 객체에 대해 하위 element만이 조회가 된다
+    var active = document.getElementById(`active`);
+    var list = active.getElementsByClassName(`marked`)
+    for (var i=0; i < list.length; i++) {
+      console.log(list[i].textContent);
+    }
+    console.groupEnd();
+
+  </script>
+</body>
+</html>

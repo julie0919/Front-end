@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>html</li>
+    <li>css</li>
+    <li id="active" class="important current">JavaScript</li>
+  </ul>
+  <script>
+    // Element.tagName
+    cosole.log(document.getElementById(`active`).tagName)
+    document.getElementById(`active`).tagName=`a`
+    // 위의 코드를 실행해도 a태그로 바뀌지 않는다
+    // => tagName: 읽기전용
+
+    // Element.id
+    var active = document.getElementById(`active`);
+    console.log(active.id); //active를 출력한다
+    active.id = `deactive`; // element에 대한 id 값이 deactive 로 변경된다
+    console.log(active.id)  // deactive를 출력한다
+
+    // Element.className
+    // className 보다 classList API를 더 활용한다
+    // JavaScript의 예약어(ex. class)의 경우 HTML의 속성명과 property의 이름이 일치하지 않는 경우가 있다
+    var active = document.getElementById(`active`);
+    // class 값을 변경할 때는 프로퍼티의 이름으로 className을 사용한다.
+    active.className = `important current`; // Element의 className 은 important current로 변경된다.
+    console.log(active.className);
+
+    // 클래스를 추가할 때는 아래와 같이 문자열의 더한다
+    active.className += `readed`;
+
+    // Element.classList
+    var active = document.getElementById(`active`); // active.classList = DOMTokenList
+    
+    function loop() {
+      for(var i=0; i < active.classList.length; i++) {
+        console.log(i, active.classList[i]);
+      }
+    }
+    // 클래스를 추가
+
+  </script>
+  <input type="button" value="DOMTokenList" onclick="console.log(document.getElementById('active').classList);">
+  <input type="button" value="조회" onclick="loop();">
+  <input type="button" value="추가" onclick="document.getElementById('active').classList.add('marked');">
+  <input type="button" value="제거" onclick="document.getElementById('active').classList.remove('important');">
+  <!-- 토글: 없으면 생성, 있다면 제거 -->
+  <input type="button" value="토글" onclick="document.getElementById('active').classList.toggle('current');">
+
+</body>
+</html>

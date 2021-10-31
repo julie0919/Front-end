@@ -8,13 +8,19 @@
 </head>
 <body>
   <input type="button" id="hw" value="Hello world">
-  <!-- 자바 스크립트와 html을 구분, html 문법 -->
-  <script>
-    var hw = document.getElementById('hw');
-    hw.addEventListener('click', function(){
-      alert('Hello World')
-    })
-  </script>
-  <!-- 유지보수, 정보제어에 좋다 -->
+  <script src="./script.js"></script>
+  <!-- html 문서에서 자바스크립트 코드를 완전히 분리할 수 있다.
+      웹페이지가 정보로서의 가치가 높아진다
+      하나의 js파일을 여러 html 파일에서 사용이 가능해져 유지보수의 편의성을 향상시킨다
+        - 중복을 제거한다 
+      서버와 클라이언트가 주고받는 데이터 양을 줄여준다 (쿠키)-->
 </body>
 </html>
+
+<!-- 만약 script 태그를 head 밑에 두게 된다면 
+    브라우저는 하단의 body 부분을 해석하지 않았으며 element 를 읽어올 수 없기 때문에 null로 인식이 된다
+    결국 존재하지 않는 객체의 메서드를 호출하는 것이 되므로 자바스크립트는 오류를 발생시킨다. 
+
+    head태그안에 넣고 싶다면 window.onload를 추가한다
+    현재 웹페이지의 모든 코드가 다 읽힌 상태이고 필요한 정보를 다운로드가 끝나서 웹페이지가 완성되었을때
+    웹브라우저는 윈도우 객체의 onload라는 메서드를 호출 가능하다. 결과적으로 에러를 피할 수 있다 -->

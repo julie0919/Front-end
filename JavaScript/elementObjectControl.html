@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a id="target" href="http://naver.com">naver</a>
+  <p id="target2">Hello World</p>
+
+  <!-- attribute vs property -->
+  <a id="propertyTarget" href="./demo1.html">ot</a>
+  <script>
+    var t = document.getElementById(`target`);
+    // element가 가지고 있는 메소드 중에서 getAttribute는 href라는 속성의 값을 가져온다.
+    console.log(t.getAttribute(`href`));  // http://naver.com
+
+    // setAttribute는 속성의 값을 설정한다
+    // 존재하지 않는 속성이라면 추가할 수 있다 
+    t.setAttribute(`title`, `naver.com`);
+
+    // hasAttribute는 element에 특정 속성이 있는지 없는지 체크한다, T/F 리턴
+    console.log(t.hasAttribute(`title`));
+
+    // removeAttribute는 속성을 제거할 수 있다
+    t.removeAttribute(`title`)
+
+    var target2 = document.getElementById(`target2`);
+    // attribute 방식
+    target.setAttribute(`class`, `important`);
+
+    // property 방식
+    // className을 직접 지정한다.
+    target.className = `important`;
+
+    // 하지만 이 경우 className을 사용하여 속성에 접근하는데 이때 HTML 속성명과 property 속성명이 다르다
+    /*
+      HTML               JS
+      class           className
+      readonly        readOnly
+      rowspan         rowSpan
+      colspan         colSpan
+      usemap          useMap
+      frameborder     frameBorder
+      for             htmlFor
+      maxlength       maxLength
+    */
+
+    // 현재 웹페이지가 http://localhost/....html 일때
+    var target3 = document.getElementById(`propertyTarget`);
+
+    // http://localhost/.../demo1.html
+    // Property를 통해 접근한다면 a 태그에 상대경로로 입력되어 있어도 전체 경로가 리턴된다
+    console.log(`target3.href`, target3.href);
+
+    // ./demo1.html
+    // 속성 Attribute를 통해 접근한다면 a 태그에 직접 기술한 내용이 출력이 된다
+    console.log(`target.getAttribute("href")`, target.getAttribute(`href`));
+
+  </script>
+</body>
+</html>

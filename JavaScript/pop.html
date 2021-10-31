@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>alert 경고창</h3>
+  <input type="button" value="alert_inline" onclick="alert('hello world')"><br>
+  <input type="button" value="alert_fc" onclick="alertfnc()">
+  <br>
+  <br>
+
+  <h3>confirm</h3>
+  <input type="button" value="confirm" onclick="func_confirm()">
+  <br>
+  <br>
+
+  <h3>prompt</h3>
+  <input type="button" value="prompt" onclick="func_prompt()">
+  
+  <script>
+    function alertfnc() {
+      alert(1)
+      alert(2)
+      alert(3)
+    }
+
+    function func_confirm() {
+      if(confirm(`ok?`)) {
+        alert(`ok!`);
+      } else {
+        alert(`cancel`);
+      }
+    }
+
+    function func_prompt() {
+      if(prompt(`id?`) === `lol`) {
+        alert(`welcome`);
+      } else {
+        alert(`fail`);
+      }
+    }
+  </script>
+</body>
+</html>
+
+<!-- http     ://url  :80   /module/1   ?id=1   #hash
+     protocol   host   port   pathname  search  hash 
+           식별주소 app식별번호 서버app의특정정보 전달값 app의 특정위치를 식별하는 식별자인 북마크-->

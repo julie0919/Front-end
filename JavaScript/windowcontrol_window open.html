@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  li {padding:10px; list-style: none;}
+</style>
+<body>
+  <ul>
+    <li>
+      첫번째 인자는 새 창에 로드할 문서의 url이다.
+      인자를 생략하면 이름이 붙지 않은 새 창이 만들어진다 <br>
+      <input type="button" onclick="open1()" value="window.open('demo2.html');">
+    </li>
+    <li>
+      <!-- a tag에 target이라는 속성이 있는데 이때 _self와 _blank 가 들어올 수 있다
+      open tag는 자바스크립트를 이용해서 a tag 를 사용자가 직접 클릭한 것과 동일한 효과를 낼 수 있다. -->
+      두번째 인자는 새 창의 이름이다.
+      _self 는 스크립트가 실행되는 창을 의미한다. <br>
+      <!-- 새탭이 열리지않고 현재 문서의 내용이 demo2.html로 바뀐다. -->
+      <input type="button" onclick="open2()" value="window.open('demo2.html', '_self');">
+    </li>
+    <li>
+      <!-- blank를 클릭할때마다 새창이 생성된다. -->
+      _blank 는 새 창을 의미한다. <br>
+      <input type="button" onclick="open3()" value="window.open('demo2.html', '_blank');">
+    </li>
+    <li>
+      창에 이름을 붙일 수 있다. open을 재실행 했을 때 동일한 이름의 창이 있다면 그곳으로 문서가 로드된다. <br>
+      <input type="button" onclick="open4()" value="window.open('demo2.html', 'ot');">
+    </li>
+    <li>
+      세번째 인자는 새 창의 모양과 관련된 속성이 온다. <br>
+      <input type="button" onclick="open5()" value="window.open('demo2.html', '_blank', 'width=200, height=200, resizable=yes');">
+    </li>
+  </ul>
+  
+  <script>
+    function open1() {
+      window.open(`demo.html`);
+    }
+
+    function open2() {
+      window.open(`demo.html`, `_self`);
+    }
+    function open3() {
+      window.open(`demo.html`, `_blank`);
+    }
+    function open4() {
+      window.open(`demo.html`, `ot`);
+    }
+    function open5() {
+      window.open(`demo.html`, `_blank`, `width=200, height=200, resizable=no`);
+    }
+    
+  </script>
+</body>
+</html>

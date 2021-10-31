@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #target {
+      width: 100px;
+      height: 100px;
+      border: 50px solid #1065e6;
+      padding: 50px;
+      margin: 50px
+    }
+  </style>
+</head>
+<body>
+  <div id="target">
+    Coding
+  </div>
+  <input type="button" id="scrollBtn" value="scroll(0, 1000)" />
+  <script>
+    var t = document.getElementById('target');
+    console.log(t.getBoundingClientRect());
+    console.log(t.offsetParent)
+    console.log('clientWidth:', t.clientWidth, 'clientHeight:', t.clientHeight);
+
+    // viewport 좌표
+    setInterval(function() {
+      console.log('getBoundingClientRect: ', t.getBoundingClientRect().top, 'pageYOffset:', window.pageYOffset);
+    }, 1000)
+
+    // scroll Tool을 통해서 scroll 제어
+    document.getElementByid('scrollBtn').addEventListener('click', function() {
+      window.scrollTo(0, 1000);
+    })
+
+    // inner: veiwport, screen: 사용자의 모니터의 해상도
+    console.log('window.innerWidth:', window.innerWidth, 'window.innerHeight:', window.innerHeight);
+    console.log('screen.width:', screen.width, 'screen.height:', screen.height);
+  </script>
+  
+</body>
+</html>
