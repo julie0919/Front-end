@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- HTML은 화면에 나타나는 태그/DOM 의 정보를 넣는다 -->
+  <div id="app">
+    <!-- Hello World -->
+  </div>
+
+  <!-- JS역할은 해당 태그나 DOM의 내용을 조작한다  -->
+  <script>
+    // jQuery: $('#app');
+    var div = document.querySelector('#app');
+    
+    // 특정 태그마다 서버에서 받아온 데이터를 일일이 문자열로 직접 할당하는 것이 아닌
+    // 변수를 선언하여 데이터를 할당한 후 변수를 연결하여 화면에 표현한다.
+    var str = 'hello world';
+    console.log(div);
+    div.innerHTML = str;
+    // div.innerHTML = 'Hello World';
+    
+    // 만약 str값이 변경되도 화면에 반영되지 않는다
+    str = 'hello world!!!';
+
+    // 기존에는 해당 태그의 정보를 가져와 변경된 정보를 재할당을 해야 화면에 반영되었다.
+    div.innerHTML = str;
+  </script>
+</body>
+</html>
