@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- props: <태그 v-bind: 프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></태그> -->
+    <app-header v-bind:propsdata="message"></app-header>
+
+    <app-content v-bind:propsdata="num"></app-content>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var appHeader = {
+      template: '<h1>{{ propsdata }}</h1>',
+      props: ['propsdata'],
+    }
+
+    // 컴포넌트는 각각의 데이터 영역이므로 고유의 유효범위를 갖기 때문에 상위의 propsdata내용과 구분이 된다
+    var appContent = {
+      template: '<div>{{ propsdata }}</div>',
+      props: ['propsdata'],
+    }
+
+    new Vue({
+      el: '#app',
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent,
+      },
+      data: {
+        message: 'hi',
+        num: 10,
+      }
+    })
+
+    /*
+    Root 컴포넌트(상위컴포넌트)에 있는 message 데이터 속성이 바뀌었을 때
+    바뀐 데이터가 그대로 반영되서 app-header의 propsdata로 내려오게 된다
+    ==> Reactivity가 props 에도 반영이 된다
+
+    Vue.js의 data-binding: {{ 데이터속성 / props속성 }}
+    hi 를 내려보냈기 때문에 props에 hi가 내려오고 최종적으로 h1태그에 hi가 나타난다
+    */
+  </script>
+</body>
+</html>

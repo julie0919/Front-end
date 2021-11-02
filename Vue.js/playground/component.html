@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Vue생성자에서 선택해준 인스턴스(app Id 태그)에서 하단에 정의한 app-header태그를 넣어주면 컴포넌트 내용이 화면에 반영된다-->
+    <app-header></app-header>
+    <app-content></app-content>
+    <app-footer></app-footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // 컴포넌트 등록하기
+    // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+    // 전역 컴포넌트 - 실제 서비스를 구현할 때는 구현할 일이 거의 없다.
+    Vue.component('app-header', {
+      template: '<h1>Header</h1>'
+    });
+    Vue.component('app-content', {
+      template: '<div>content 컴포넌트를 만들었다</div>'
+    });
+    
+    // 지역 컴포넌트 - 서비스를 구현할 때 가장 많이 사용하는 컴포넌트 등록 방식
+    new Vue({
+      el: '#app',
+      // 지역 컴포넌트를 등록한다
+      // 여러개의 속성이 들어가기 때문에 s를 붙여준다 (methods도 마찬가지 - 서비스를 구현하기 위한 로직이 여러개이므로)
+      components: {
+        // '키': '값'
+        // 어떤 속성을 등록하고 값을 연결하는 방식
+        // '컴포넌트 이름': 컴포넌트 내용 (객체 리터럴)
+        'app-footer': {
+          template: '<footer>여기는 푸터다</footer>'
+        }
+      }
+    });
+    
+    /*
+    Root: 상위 컴퍼넌트(부모)
+    app-header & app-content: 하위 컴포넌트 (자식)
+    
+    전역 컴포넌트와 지역 컴포넌트의 차이
+    - 지역 컴포넌트는 하단에 어떤 속성이 등록되어 있는지 알 수 있다.
+    - 따라서 실제 서비스를 구현할 때는 components라는 속성을 이용하여 하단에 추가로 등록해가는 방식을 사용한다
+    
+    - 추가로 Vue.component 는 실제로 서비스를 구현할 때, 대부분 플러그인이나 라이브러리 형태로 전역으로 사용되어야 하는 컴포넌트일때만 사용한다.
+    */
+  </script>
+</body>
+</html>

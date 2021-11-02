@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 아래의 el: '#app'으로 인해 vue의 기능과 속성이 유효해진다 -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // 인스턴스를 생성하면 개발자 도구에서 Root 컴포넌트로 인식한다
+    var vm = new Vue({
+      // body태그 안에서 app이라고 하는 Id를 가진 태그를 찾아서 Vue 인스턴스를 붙이겠다
+      // 만약 el가 없다면 데이터를 지정한 태그에서 사용할 수 없다
+      // el로 꼭 지정해주고 Vue인스턴스를 꼭 특정태그에 붙여줘야 사용할 수 있다
+      el: '#app',
+      data: {
+        message: 'hi'
+      }
+    });
+
+    /*
+    다음과 같이 options 라는 객체를 정의하고 변수에 할당한 후 Vue생성자를 만들때 인자로 사용하는 방법도 있다
+    하지만 Vue공식문서나 가독성의 측면에서 볼 때, 별도로 변수로 구분하는 것이 아닌 객체 리터럴을 생성자 Vue안에 넣는 것이 가독성이 더 뛰어나다
+    따라서 위의 코드와 같이 생성자 안에 들어가는 인자는 객체가 들어가며 객체 표기법으로 객체를 바로 정의하였다
+
+    var options = {
+      el: '#app',
+      data: {
+        message: 'hi'
+      },
+      methods: {
+      }, 
+    }
+
+    var vm = new Vue(options);
+    */
+
+  </script>
+    
+</body>
+</html>
