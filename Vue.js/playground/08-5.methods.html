@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <태그 v-on:click="메서드 이름"></태그> -->
+    <!-- 버튼이라는 태그를 클릭했을때 메서드가 실행된다. 메서드는 아래 생성자에 정이하면 된다. -->
+    <button v-on:click="logText">click me</button>
+
+    <!-- v-on:일반적인 이벤트 타입.이벤트modifier(enter, esc 등) -->
+    <input type="text" v-on:keyup.enter="logText">
+    <button>add</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      methods: {
+        logText: function() {
+          console.log('clicked');
+        }
+      }
+    })
+  </script>
+</body>
+</html>

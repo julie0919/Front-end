@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ num }}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+      },
+      computed: {
+        // doubleNum이라는 computed속성은 this.num에 2를 곱한 값을 리턴하기때문에
+        // {{ doubleNum }}을 찍어보면 화면에 2배한 값이 나타난다. Vue내부적으로 계산하는 속성이다
+        // computed는 단순한 값에 대한 계산/연산, 특히 validation Vue 라이브러리에 대부분 computed속성이 사용된다.
+        // 단순한 텍스트의 값을 받아서 거기에 대한 validation 값을 계산한다.
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      },
+      watch: {
+        // num이 바꼈을 때 특정 로직을 실행한다 ==> num의 값을 조종한다
+        // 무거운 로직(매번 실행되기 부담스러운 로직)과 같은 데이터 요청에 적합하다.
+        num: function(newValue, oldValue) {
+          // num값에 따라 다시 데이터 로직을 불러온다
+          this.fetchUserByNumber(newValue);
+        }
+      },
+      methods: {
+        fetchUserByNumber: function(num) {
+          console.log(num);
+          // axios.get(num)
+        }
+      },
+    })
+
+    /*
+    공식문서
+    웬만하면 computed를 사용하는 것이 좋고 
+    watch 보다는 computed가 대부분의 케이스에 적합하다.
+    watch는 코드가 너무 길어질 수 있고 computed가 이미 캐싱이라던지 내부적인 튜닝이 더 많이 되있다.
+     */
+  </script>
+  
+</body>
+</html>

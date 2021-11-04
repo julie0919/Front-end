@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-bind가 HTML의 표준속성(Id, class)에 붙게되면
+    id 라는 속성에는 Vue생성자의 data에서 관리하는 특정 데이터값이 연결된다. -->
+    <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+    <p>{{ doubleNum }}</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+        uuid: 'abc1234',
+        name: 'text-blue',
+      },
+      computed: {
+        doubleNum: function() {
+          return this.num * 2
+        }
+      }
+    })
+
+    /*
+    Vue의 역할
+    단지 화면에서 표현되는 값들 뿐만 아니라 전체적인 DOM에 대한 정보까지
+    Reactive하게 바로바로 다시 반영해서 DOM을 변경해준다.
+    */
+  </script>
+</body>
+</html>

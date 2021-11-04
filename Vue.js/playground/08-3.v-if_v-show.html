@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+    <p>{{ doubleNum }}</p>
+
+    <!-- 로딩중인 상태에서는(true) 아래의 텍스트가 출력된다 -->
+    <div v-if="loading">
+      Loading....
+    </div>
+  
+    <!-- 로딩이 끝나면(false) 아래의 텍스트가 출력된다 -->
+    <div v-else>
+      test user has been logged in
+    </div>
+
+    <div v-show="loading">
+      Loading....
+    </div>
+    <!-- v-if와 v-show의 차이는 if 는 DOM을 아예 제거하는 것이고 
+    show는 CSS 스타일에서 "display: none;"으로 유관상으로 보이지 않게 하고 DOM의 정보는 존재한다. -->
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+        uuid: 'abc1234',
+        name: 'text-blue',
+        loading: true,
+      },
+      computed: {
+        doubleNum: function() {
+          return this.num * 2
+        }
+      }
+    })
+  </script>
+</body>
+</html>

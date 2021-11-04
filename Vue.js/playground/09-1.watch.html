@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ num }}
+    <button v-on:click="addNum">increase</button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+      },
+      watch: {
+        // 기본적으로 데이터를 넣을 수 있고 데이터의 변화에 따라서 특정 로직을 실행할 수 있는 vue의 속성이다.
+        num: function() {
+          this.logText();
+          // num이 바뀔때마다 logText가 실행이 된다
+        }
+      },
+      methods: {
+        addNum: function() {
+          this.num++;
+        },
+        logText: function() {
+          console.log('changed');
+        },
+      },
+    })
+  </script>
+  
+</body>
+</html>
